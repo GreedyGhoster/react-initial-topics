@@ -1,23 +1,10 @@
-const User = {
-  firstName: "Oleg",
-  lastName: "Stepanov",
-  age: 20,
-};
-const hello = function () {
-  return `
-      Hello, ${User.firstName} ${User.lastName}. You ${User.age} years old
-    `;
-};
-
-const object = ReactDOM.createRoot(document.querySelector("#main-component"));
-
-function hellobye() {
-  const element = (
-    <div>
-      <h1>{hello()}</h1>
-      <h2>Goodbye</h2>
+const root = ReactDOM.createRoot(document.querySelector("#main-component"));
+function Greeting(props) {
+  return (
+    <div class="">
+      <h1>Hello {props.NameUser}</h1>
     </div>
   );
-  object.render(element);
 }
-hellobye();
+const HelloUser = <Greeting NameUser={prompt("Введите ваше имя:")} />;
+root.render(HelloUser);
