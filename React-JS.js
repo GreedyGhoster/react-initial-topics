@@ -1,7 +1,7 @@
 const root = ReactDOM.createRoot(document.querySelector("#main-component"));
 function Greeting(props) {
   return (
-    <div class="">
+    <div>
       <h1>Hello {props.NameUser}</h1>
     </div>
   );
