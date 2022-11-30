@@ -10,12 +10,10 @@ function Greeting(props) {
 }
 function HelloUser() {
   return (
-    <div>
-      <Greeting
-        FirstName={prompt("Введите ваше имя:")}
-        LastName={prompt("Введите вашу фамилию")}
-      />
-    </div>
+    <Greeting
+      FirstName={prompt("Введите ваше имя:")}
+      LastName={prompt("Введите вашу фамилию:")}
+    />
   );
 }
 root.render(HelloUser());
