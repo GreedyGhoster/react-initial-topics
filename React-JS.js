@@ -1,7 +1,24 @@
 const root = ReactDOM.createRoot(document.querySelector("#main-component"));
 class YourTime extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+  }
+  tick() {
+    this.setState({
+      date: new Date(),
+    });
+  }
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
   render() {
-    return <h1>Время на момент открытия: {new Date().toLocaleTimeString()}</h1>;
+    return <h1>Время: {new Date().toLocaleTimeString()}</h1>;
   }
 }
 class Greeting extends React.Component {
