@@ -1,47 +1,39 @@
 const root = ReactDOM.createRoot(document.querySelector("#main-component"));
-class YourTime extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-  }
-  tick() {
-    this.setState({
-      date: new Date(),
-    });
-  }
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  render() {
-    return <h1>Время: {new Date().toLocaleTimeString()}</h1>;
-  }
-}
-class Greeting extends React.Component {
+class RootUser extends React.Component {
   render() {
     return (
       <div>
-        <h1>
-          Привет {this.props.FirstName} {this.props.LastName}
-        </h1>
-        <h1>Сегодняшняя дата: {new Date().toLocaleDateString()}</h1>
-        <YourTime />
+        <h1>Привет администратор страницы</h1>
+        <h1>Вам нужно сделать домашнюю работу!!!</h1>
       </div>
     );
   }
 }
-class HelloUser extends React.Component {
+class SimpleUser extends React.Component {
   render() {
     return (
-      <Greeting
-        FirstName={prompt("Введите ваше имя:")}
-        LastName={prompt("Введите вашу фамилию:")}
-      />
+      <div>
+        <h1>Привет обычный пользователь!!!</h1>
+        <h1>Логин и пароль администратора это не Root и Root!</h1>
+      </div>
     );
   }
 }
-root.render(<HelloUser />);
+class Greeting extends React.Component {
+  render() {
+    if (
+      (this.props.checkLogin == "Root") &
+      (this.props.checkPassword == "Root")
+    ) {
+      return <RootUser />;
+    } else {
+      return <SimpleUser />;
+    }
+  }
+}
+root.render(
+  <Greeting
+    checkLogin={prompt("Введите логин:")}
+    checkPassword={prompt("Введите пароль:")}
+  />
+);
