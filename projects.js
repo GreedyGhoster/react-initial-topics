@@ -39,3 +39,28 @@ class HelloUser extends React.Component {
   }
 }
 root.render(<HelloUser />);
+
+// subscribe to clean js
+const button = document.querySelector("#button");
+button.addEventListener("click", () => (button.textContent = "Thans"));
+
+// subscribe to React
+class Subscribe extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      content: "Subsribe",
+    };
+  }
+  changeMessage() {
+    this.setState({
+      content: "Thans",
+    });
+  }
+  render() {
+    return (
+      <button onClick={() => this.changeMessage()}>{this.state.content}</button>
+    );
+  }
+}
+root.render(<Subscribe />);
