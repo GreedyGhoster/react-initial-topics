@@ -22,8 +22,8 @@ class SimpleUser extends React.Component {
 class Greeting extends React.Component {
   render() {
     if (
-      (this.props.checkLogin == "Root") &
-      (this.props.checkPassword == "Root")
+      (this.props.checkLogin == "root") &
+      (this.props.checkPassword == "root")
     ) {
       return <RootUser />;
     } else {
