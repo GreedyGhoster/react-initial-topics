@@ -1,39 +1,54 @@
 const root = ReactDOM.createRoot(document.querySelector("#main-component"));
-class RootUser extends React.Component {
+// Counter
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0,
+    };
+  }
+  CounterMinus() {
+    let num = this.state.counter;
+    num--;
+    this.setState({
+      counter: num,
+    });
+  }
+  CounterPlus() {
+    let num = this.state.counter;
+    num++;
+    this.setState({
+      counter: num,
+    });
+  }
   render() {
     return (
       <div>
-        <h1>Привет администратор страницы</h1>
-        <h1>Вам нужно сделать домашнюю работу!!!</h1>
+        <h1>Counter:</h1>
+        <div className="counter">
+          <h1>{this.state.counter}</h1>
+          <div className="buttons">
+            <div>
+              <button
+                className="counter-minus"
+                onClick={() => this.CounterMinus()}
+              >
+                Minus
+              </button>
+            </div>
+            <div>
+              <button
+                className="counter-plus"
+                onClick={() => this.CounterPlus()}
+              >
+                Plus
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
-class SimpleUser extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Привет обычный пользователь!!!</h1>
-        <h1>Логин и пароль администратора это не Root и Root!</h1>
-      </div>
-    );
-  }
-}
-class Greeting extends React.Component {
-  render() {
-    if (
-      (this.props.checkLogin == "root") &
-      (this.props.checkPassword == "root")
-    ) {
-      return <RootUser />;
-    } else {
-      return <SimpleUser />;
-    }
-  }
-}
-root.render(
-  <Greeting
-    checkLogin={prompt("Введите логин:")}
-    checkPassword={prompt("Введите пароль:")}
-  />
-);
+
+root.render(<Counter />);

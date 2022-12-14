@@ -12,7 +12,7 @@ class YourTime extends React.Component {
     clearInterval(this.timerID);
   }
   render() {
-    return <h1>Время: {new Date().toLocaleTimeString()}</h1>;
+    return <h1>Время: {this.state.date.toLocaleTimeString()}</h1>;
   }
 }
 class Greeting extends React.Component {
@@ -42,19 +42,19 @@ root.render(<HelloUser />);
 
 // subscribe to js
 const button = document.querySelector("#button");
-button.addEventListener("click", () => (button.textContent = "Thans"));
+button.addEventListener("click", () => (button.textContent = "Thanks"));
 
 // subscribe to React
 class Subscribe extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       content: "Subsribe",
     };
   }
   changeMessage() {
     this.setState({
-      content: "Thans",
+      content: "Thanks",
     });
   }
   render() {
@@ -116,3 +116,85 @@ class PersonList extends React.Component {
   }
 }
 root.render(<PersonList person={persons} />);
+
+// greetings root or user
+class RootUser extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Привет администратор страницы</h1>
+        <h1>Вам нужно сделать домашнюю работу!!!</h1>
+      </div>
+    );
+  }
+}
+class SimpleUser extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Привет обычный пользователь!!!</h1>
+        <h1>Логин и пароль администратора это не Root и Root!</h1>
+      </div>
+    );
+  }
+}
+class Greeting extends React.Component {
+  render() {
+    if (
+      (this.props.checkLogin == "root") &
+      (this.props.checkPassword == "root")
+    ) {
+      return <RootUser />;
+    } else {
+      return <SimpleUser />;
+    }
+  }
+}
+root.render(
+  <Greeting
+    checkLogin={prompt("Введите логин:")}
+    checkPassword={prompt("Введите пароль:")}
+  />
+);
+
+// Composition of areas
+function Right() {
+  return <div className="Right" />;
+}
+function Left() {
+  return <div className="Left" />;
+}
+class Areas extends React.Component {
+  render() {
+    return (
+      <div className="ColorArea">
+        <div className="LeftArea">{this.props.left}</div>
+        <div className="RightArea">{this.props.right}</div>
+      </div>
+    );
+  }
+}
+function Colors() {
+  return <Areas left={<Left />} right={<Right />} />;
+}
+root.render(<Colors />);
+
+// Composition color
+class Greeting extends React.Component {
+  render() {
+    return (
+      <div className={"Colors-" + this.props.color}>{this.props.children}</div>
+    );
+  }
+}
+class HelloUser extends React.Component {
+  render() {
+    return (
+      <Greeting color="gray">
+        <h1>Welcome</h1>
+        <p>Thank for your attention!</p>
+      </Greeting>
+    );
+  }
+}
+root.render(<HelloUser />);
