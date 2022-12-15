@@ -1,5 +1,5 @@
 const root = ReactDOM.createRoot(document.querySelector("#main-component"));
-// Counter
+// Counter on the class component
 class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -7,6 +7,7 @@ class Counter extends React.Component {
       counter: 0,
     };
   }
+
   CounterMinus() {
     let num = this.state.counter;
     num--;
