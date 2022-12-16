@@ -28,27 +28,3 @@ body {
   color: azure;
   background-color: #6e9cef;
 }
-.overlay-animated {
-  opacity: 0;
-  visibility: hidden;
-  margin-top: 2rem;
-}
-.overlay-animated .modal-animated {
-  opacity: 0;
-  visibility: hidden;
-  transition-delay: 0.2s;
-  margin: auto;
-  border: 1px groove;
-  height: 130px;
-  width: 400px;
-  color: azure;
-  background-color: #6e9cef;
-}
-.show {
-  opacity: 1;
-  visibility: visible;
-}
-.show .modal-animated {
-  opacity: 1;
-  visibility: visible;
-}
