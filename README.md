@@ -1,1 +1,1 @@
-I do not support this repository right now
+I don't support this repository right now
